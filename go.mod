@@ -1,4 +1,4 @@
-module ko1eda/productdiscountxslx
+module ko1eda/productdiscountxlsx
 
 go 1.15
 
