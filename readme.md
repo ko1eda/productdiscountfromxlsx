@@ -11,6 +11,14 @@ it will produce a translated csv file ready for magento 2 customer group discoun
 
 You can also build the executable of this project using ```go build``` or use the included linux executable if you are running on an amd64 linux based os 
 
+### To run executable 
+you can run the executable first by giving it executable permissions, and then running the file from the given directory
+make sure there is a ```/data``` directory in the root of where you are running this. and that the ```data/``` directory contains a ```discount_item_list.xlsx``` file to read from. the format of te file can be found below 
+```
+chmod +x ./productdiscountfromxlsx
+./productdiscountfromxlsx
+```
+
 
 ### structure for the xsls file 
 | sku | wholesaler | retailer |
