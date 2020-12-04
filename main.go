@@ -8,9 +8,9 @@ import (
 	"github.com/tealeg/xlsx/v3"
 )
 
+// i know records should be a passed by reference from main func but for sake of time, global state
 var (
-	isFirstSuccessCall = false
-	records            = [][]string{
+	records = [][]string{
 		{"sku", "tier_price_website", "tier_price_customer_group", "tier_price_qty", "tier_price", "tier_price_value_type"},
 	}
 )
@@ -29,7 +29,9 @@ func main() {
 		log.Fatalf("FileOpenErr: %+v", err)
 	}
 
+	// close our sheet when we're done
 	sh, ok := file.Sheet["Sheet1"]
+	defer sh.Close()
 
 	if !ok {
 		log.Fatalf("SheetDoesNotExistErr")
@@ -88,7 +90,7 @@ func main() {
 		})
 	})
 
-	// here we create our exported file data directory
+	// here we create our exported file
 	// and write all our translated data from the xlsx into the csv
 	csvFile, err := os.Create("./data/export_advanced_pricing.csv")
 
